@@ -32,21 +32,25 @@ class ListTableViewController: UITableViewController {
         if saveData.arrayForKey("WORD") != nil {
             wordArray = saveData.arrayForKey("WORD")!
         }
-        tableView.reLoadData()
+        tableView.reloadData()
     }
     
+//セクションの数を決める
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
+//セルの個数を決める
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return wordArray.count
     }
+//セルの中身の表示の仕方を決める
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexpath:
         NSIndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath:indexpath) as! ListTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexpath) as! ListTableViewCell
             
+//indexPathにエラー
             let nowIndexPathDictionary: (AnyObject) =  wordArray[indexPath.row]
             
             cell.englishLabel.text = nowIndexPathDictionary["english"] as? String
@@ -55,6 +59,12 @@ class ListTableViewController: UITableViewController {
             return cell
     }
     
+//必要？
+    @IBAction func onBackButon(){
+        
+        self.performSegueWithIdentifier("toFirstView", sender: nil)
+        
+    }
     
     
 }
@@ -137,6 +147,4 @@ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
 // Get the new view controller using segue.destinationViewController.
 // Pass the selected object to the new view controller.
 }
-*
-
-}
+*/
