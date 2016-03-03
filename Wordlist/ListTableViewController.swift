@@ -18,15 +18,15 @@ class ListTableViewController: UITableViewController {
         super.viewDidLoad()
         
         tableView.registerNib(UINib(nibName: "ListTableViewCell", bundle: nil), forCellReuseIdentifier: "cell")
-    
-//        tableView.registerNib(UINib(nibName: "ListTableViewCell", bundle:nil),forCellReuseIdentifer: "cell")
+        
+        //        tableView.registerNib(UINib(nibName: "ListTableViewCell", bundle:nil),forCellReuseIdentifer: "cell")
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-  
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         if saveData.arrayForKey("WORD") != nil {
@@ -35,22 +35,22 @@ class ListTableViewController: UITableViewController {
         tableView.reloadData()
     }
     
-//セクションの数を決める
+    //セクションの数を決める
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
     
-//セルの個数を決める
+    //セルの個数を決める
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return wordArray.count
     }
-//セルの中身の表示の仕方を決める
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexpath:
+    //セルの中身の表示の仕方を決める
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath:
         NSIndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexpath) as! ListTableViewCell
+            let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ListTableViewCell
             
-//indexPathにエラー
+            //indexPathにエラー
             let nowIndexPathDictionary: (AnyObject) =  wordArray[indexPath.row]
             
             cell.englishLabel.text = nowIndexPathDictionary["english"] as? String
@@ -59,7 +59,7 @@ class ListTableViewController: UITableViewController {
             return cell
     }
     
-//必要？
+    //必要？
     @IBAction func onBackButon(){
         
         self.performSegueWithIdentifier("toFirstView", sender: nil)

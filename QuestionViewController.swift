@@ -14,7 +14,7 @@ class QuestionViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBOutlet var nextButton: UIButton!
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet var answerLabel: UILabel!
@@ -40,54 +40,54 @@ class QuestionViewController: UIViewController {
             wordArray.removeAtIndex(index)
         }
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         wordArray = saveData.arrayForKey("WORD")!
         shuffle()
         questionLabel.text = shuffledWordArray[nowNumber]["english"] as? String
     }
-        
-}
     
-
+    
+    
+    
     @IBAction func nextButtonPushed() {
-    
-    //回答したか
-    if isAnswered {
-        //次の問題へ
-        nowNumber++
-        answerLabel.text = ""
         
-        //次の問題を表示するか
-        if nowNumber < shuffledWordArray.count  {
-            //次の問題を表示
-            questionLabel.text = shuffledWordArray[nowNumber]["english"] as? String
-            //isAnsweredをfalseにする
-            isAnswered = false
-            //ボタンのタイトルを変更する
-            nextButton.setTitle("答えを表示", forState: UIControlState.Normal)
-        }else{
-            self.performSegueWithIdentifier("toFinishView", sender: nil)
-        }
+        //回答したか
+        if isAnswered {
+            //次の問題へ
+            nowNumber++
+            answerLabel.text = ""
+            
+            //次の問題を表示するか
+            if nowNumber < shuffledWordArray.count  {
+                //次の問題を表示
+                questionLabel.text = shuffledWordArray[nowNumber]["english"] as? String
+                //isAnsweredをfalseにする
+                isAnswered = false
+                //ボタンのタイトルを変更する
+                nextButton.setTitle("答えを表示", forState: UIControlState.Normal)
+            }else{
+                self.performSegueWithIdentifier("toFinishView", sender: nil)
+            }
         }else{
             //答えを表示する
             answerLabel.text = shuffledWordArray[nowNumber]["japanese"] as? String
             isAnswered = true
             nextButton.setTitle("次へ", forState: UIControlState.Normal)
         }
-        }
-
-
-
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
     }
-    */
+    
+}
+
+
+/*
+// MARK: - Navigation
+
+// In a storyboard-based application, you will often want to do a little preparation before navigation
+override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+// Get the new view controller using segue.destinationViewController.
+// Pass the selected object to the new view controller.
+}
+*/
 
 
