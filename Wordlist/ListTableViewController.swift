@@ -50,7 +50,7 @@ class ListTableViewController: UITableViewController {
         NSIndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ListTableViewCell
             
-            //indexPathにエラー
+           
             let nowIndexPathDictionary: (AnyObject) =  wordArray[indexPath.row]
             
             cell.englishLabel.text = nowIndexPathDictionary["english"] as? String
