@@ -33,6 +33,7 @@ class QuestionViewController: UIViewController {
         answerLabel.text = ""
         // Do any additional setup after loading the view.
     }
+    
     func shuffle() {
         while wordArray.count > 0 {
             let index = Int(rand()) % wordArray.count
